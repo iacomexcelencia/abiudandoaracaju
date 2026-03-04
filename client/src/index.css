@@ -1,0 +1,151 @@
+@import url('https://unpkg.com/leaflet@1.7.1/dist/leaflet.css');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: hsl(0, 0%, 100%);
+  --foreground: hsl(210, 10%, 23%);
+  --card: hsl(0, 0%, 100%);
+  --card-foreground: hsl(210, 10%, 23%);
+  --popover: hsl(0, 0%, 100%);
+  --popover-foreground: hsl(210, 10%, 23%);
+  --primary: hsl(25, 95%, 53%);
+  --primary-foreground: hsl(0, 0%, 100%);
+  --secondary: hsl(210, 10%, 23%);
+  --secondary-foreground: hsl(0, 0%, 100%);
+  --muted: hsl(210, 20%, 96%);
+  --muted-foreground: hsl(210, 10%, 50%);
+  --accent: hsl(25, 95%, 53%);
+  --accent-foreground: hsl(0, 0%, 100%);
+  --destructive: hsl(356, 91%, 54%);
+  --destructive-foreground: hsl(0, 0%, 100%);
+  --border: hsl(210, 20%, 91%);
+  --input: hsl(210, 20%, 97%);
+  --ring: hsl(25, 95%, 53%);
+  --chart-1: hsl(25, 95%, 53%);
+  --chart-2: hsl(210, 10%, 23%);
+  --chart-3: hsl(25, 70%, 65%);
+  --chart-4: hsl(25, 50%, 75%);
+  --chart-5: hsl(210, 10%, 50%);
+  --sidebar: hsl(0, 0%, 100%);
+  --sidebar-foreground: hsl(210, 10%, 23%);
+  --sidebar-primary: hsl(25, 95%, 53%);
+  --sidebar-primary-foreground: hsl(0, 0%, 100%);
+  --sidebar-accent: hsl(25, 95%, 53%);
+  --sidebar-accent-foreground: hsl(0, 0%, 100%);
+  --sidebar-border: hsl(210, 20%, 91%);
+  --sidebar-ring: hsl(25, 95%, 53%);
+  --font-sans: Inter, system-ui, sans-serif;
+  --font-serif: Georgia, serif;
+  --font-mono: Menlo, monospace;
+  --radius: 0.75rem;
+  --shadow-2xs: 0px 2px 0px 0px hsl(199, 89%, 48%, 0);
+  --shadow-xs: 0px 2px 0px 0px hsl(199, 89%, 48%, 0);
+  --shadow-sm: 0px 2px 0px 0px hsl(199, 89%, 48%, 0), 0px 1px 2px -1px hsl(199, 89%, 48%, 0);
+  --shadow: 0px 2px 0px 0px hsl(199, 89%, 48%, 0), 0px 1px 2px -1px hsl(199, 89%, 48%, 0);
+  --shadow-md: 0px 2px 0px 0px hsl(199, 89%, 48%, 0), 0px 2px 4px -1px hsl(199, 89%, 48%, 0);
+  --shadow-lg: 0px 2px 0px 0px hsl(199, 89%, 48%, 0), 0px 4px 6px -1px hsl(199, 89%, 48%, 0);
+  --shadow-xl: 0px 2px 0px 0px hsl(199, 89%, 48%, 0), 0px 8px 10px -1px hsl(199, 89%, 48%, 0);
+  --shadow-2xl: 0px 2px 0px 0px hsl(199, 89%, 48%, 0);
+  --tracking-normal: 0em;
+  --spacing: 0.25rem;
+}
+
+.dark {
+  --background: hsl(210, 10%, 5%);
+  --foreground: hsl(0, 0%, 95%);
+  --card: hsl(210, 10%, 10%);
+  --card-foreground: hsl(0, 0%, 95%);
+  --popover: hsl(210, 10%, 5%);
+  --popover-foreground: hsl(0, 0%, 95%);
+  --primary: hsl(25, 95%, 53%);
+  --primary-foreground: hsl(0, 0%, 100%);
+  --secondary: hsl(210, 10%, 23%);
+  --secondary-foreground: hsl(0, 0%, 100%);
+  --muted: hsl(210, 10%, 15%);
+  --muted-foreground: hsl(210, 10%, 60%);
+  --accent: hsl(25, 95%, 53%);
+  --accent-foreground: hsl(0, 0%, 100%);
+  --destructive: hsl(356, 91%, 54%);
+  --destructive-foreground: hsl(0, 0%, 100%);
+  --border: hsl(210, 10%, 20%);
+  --input: hsl(210, 10%, 20%);
+  --ring: hsl(25, 95%, 53%);
+  --chart-1: hsl(25, 95%, 53%);
+  --chart-2: hsl(210, 10%, 23%);
+  --chart-3: hsl(25, 70%, 65%);
+  --chart-4: hsl(25, 50%, 75%);
+  --chart-5: hsl(210, 10%, 50%);
+  --sidebar: hsl(210, 10%, 10%);
+  --sidebar-foreground: hsl(0, 0%, 95%);
+  --sidebar-primary: hsl(25, 95%, 53%);
+  --sidebar-primary-foreground: hsl(0, 0%, 100%);
+  --sidebar-accent: hsl(25, 95%, 53%);
+  --sidebar-accent-foreground: hsl(0, 0%, 100%);
+  --sidebar-border: hsl(210, 10%, 20%);
+  --sidebar-ring: hsl(25, 95%, 53%);
+  --font-sans: Inter, system-ui, sans-serif;
+  --font-serif: Georgia, serif;
+  --font-mono: Menlo, monospace;
+  --radius: 0.75rem;
+  --shadow-2xs: 0px 2px 0px 0px hsl(199, 89%, 48%, 0);
+  --shadow-xs: 0px 2px 0px 0px hsl(199, 89%, 48%, 0);
+  --shadow-sm: 0px 2px 0px 0px hsl(199, 89%, 48%, 0), 0px 1px 2px -1px hsl(199, 89%, 48%, 0);
+  --shadow: 0px 2px 0px 0px hsl(199, 89%, 48%, 0), 0px 1px 2px -1px hsl(199, 89%, 48%, 0);
+  --shadow-md: 0px 2px 0px 0px hsl(199, 89%, 48%, 0), 0px 2px 4px -1px hsl(199, 89%, 48%, 0);
+  --shadow-lg: 0px 2px 0px 0px hsl(199, 89%, 48%, 0), 0px 4px 6px -1px hsl(199, 89%, 48%, 0);
+  --shadow-xl: 0px 2px 0px 0px hsl(199, 89%, 48%, 0), 0px 8px 10px -1px hsl(199, 89%, 48%, 0);
+  --shadow-2xl: 0px 2px 0px 0px hsl(199, 89%, 48%, 0);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+  }
+}
+
+/* Custom styles for the map */
+.leaflet-container {
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+}
+
+/* Custom marker styles */
+.custom-marker {
+  border: none !important;
+  background: transparent !important;
+}
+
+.custom-qr-marker {
+  border: none !important;
+  background: transparent !important;
+}
+
+.user-location-marker {
+  border: none !important;
+  background: transparent !important;
+}
+
+/* Hide scrollbar for category filters */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Line clamp utility */
+.line-clamp-2 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
